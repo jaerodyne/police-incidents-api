@@ -1,27 +1,38 @@
 class IncidentsController < ApplicationController
   before_action :set_incident, only: :show
 
-  # GET /incidents
+  PERMITTED_INCIDENT_PARAMS = %i[
+    last_name
+    age
+    gender
+    race
+    date
+    city
+    state
+    cause_of_death
+  ].freeze
+
   def index
-    @incidents = Incident.all
+    @incidents = Incident.where(nil)
+
+    filtering_incident_params.each do |key, value|
+      @incidents = @incidents.public_send("filter_by_#{key}", value) if value.present?
+    end
 
     render json: @incidents
   end
 
-  # GET /incidents/1
   def show
     render json: @incident
   end
 
   private
   
-  # Use callbacks to share common setup or constraints between actions.
   def set_incident
     @incident = Incident.find(params[:id])
   end
 
-  # Only allow a trusted parameter "white list" through.
-  def incident_params
-    params.fetch(:incident, {})
+  def filtering_incident_params
+    params.permit(PERMITTED_INCIDENT_PARAMS)
   end
 end
