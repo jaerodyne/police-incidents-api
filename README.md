@@ -1,6 +1,6 @@
 # Police Incidents API
 
-Description
+## Installation
 
 # Mac OSX Prerequisites
 
@@ -80,11 +80,31 @@ Description
 
 6. Open your browser to `localhost:3000/incidents` and see the result
 
-## Contributing
 
-For more information on how to contribute to this project, please visit: // TODO: add contributing guide
-Bug reports and pull requests are welcome on GitHub at https://github.com/jaerodyne/police-incidents-api
+## Endpoints
+```
+/incidents
+```
+```
+/incidents/:id
+```
+```
+/incidents?city=Chicago&race=A
+```
+## Code of Conduct
+
+## Contributing
 
 ## License
 
-The project is available as open source under the terms of the [MIT LICENSE](https://opensource.org/licenses/MIT)
+### TODO:
+- [ ] Document, document, document
+- [ ] Create a filter for a date range or a year as a query param
+- [ ] Upload previous years, current seeds are only for 2020 and from Washington Post Data Source
+- [ ] Add MIT License
+- [ ] Add Code of Conduct
+- [ ] Add Contributing Guide
+- [ ] Add CI/CD Pipeline
+- [ ] Write Tests
+- [ ] Block direct merges to master
+- [ ] Auto-delete branches on successful merge and deploy

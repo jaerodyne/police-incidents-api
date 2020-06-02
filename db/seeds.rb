@@ -9,7 +9,7 @@ bar = ProgressBar.new
 # Will probably have to load in data in batches
 CSV.foreach(incident_data, headers: true) do |row|
   names = row['name'].split(' ')
-  cause_of_death = row['manner_of_death'].split(' ').map(&:downcase).reject { |cause| cause == 'and'}
+  cause_of_death = row['manner_of_death'].split(' ').map(&:downcase).reject { |cause| cause == 'and' }
 
   Incident.create(
     first_name: names[0],
