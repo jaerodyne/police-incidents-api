@@ -27,3 +27,7 @@
 - [ ] Add MIT License
 - [ ] Add Code of Conduct
 - [ ] Add Contributing Guide
+- [ ] Add CI/CD Pipeline
+- [ ] Write Tests
+- [ ] Block direct merges to master
+- [ ] Auto-delete branches on successful merge and deploy
