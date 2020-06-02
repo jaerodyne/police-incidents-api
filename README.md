@@ -5,7 +5,15 @@
 ## Installation
 
 ## Endpoints
-
+```
+/incidents
+```
+```
+/incidents/:id
+```
+```
+/incidents?city=Chicago&race=A
+```
 ## Code of Conduct
 
 ## Contributing
