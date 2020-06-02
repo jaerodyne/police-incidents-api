@@ -1,24 +1,21 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Description
 
-Things you may want to cover:
+## Installation
 
-* Ruby version
+## Endpoints
 
-* System dependencies
+## Code of Conduct
 
-* Configuration
+## Contributing
 
-* Database creation
+## License
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### TODO:
+- [ ] Document, document, document
+- [ ] Create a filter for a date range or a year as a query param
+- [ ] Upload previous years, current seeds are only for 2020 and from Washington Post Data Source
+- [ ] Add MIT License
+- [ ] Add Code of Conduct
+- [ ] Add Contributing Guide
