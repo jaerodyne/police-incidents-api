@@ -26,3 +26,4 @@ production:
   database: police_incidents
   username: police_incidents_data
   password: <%= ENV['POLICE_INCIDENTS_DB_PASSWORD'] %>
+  pool: <%= ENV['RAILS_MAX_THREADS'] || 5 %>
