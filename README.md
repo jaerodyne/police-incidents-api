@@ -2,7 +2,7 @@
 
 ## Installation
 
-# Mac OSX Prerequisites
+### Mac OSX Prerequisites
 
 1. Make sure xcode is up to date.
    ```
@@ -66,7 +66,7 @@
    gem install bundler
    ```
 
-# Getting the app started
+### Getting the app started
 
 1. Clone this repo
 
