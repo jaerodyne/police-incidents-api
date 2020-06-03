@@ -1,5 +1,13 @@
 # Police Incidents API
 
+## Table of contents
+
+* [Installation](#installation)
+* [Endpoints](#endpoints)
+* [Code of Conduct](#code-of-conduct)
+* [Contributing](#contributing)
+* [License](#license)
+
 ## Installation
 
 ### Mac OSX Prerequisites
@@ -96,6 +104,8 @@
 ## Contributing
 
 ## License
+
+The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
 
 ### TODO:
 - [ ] Document, document, document
