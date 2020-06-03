@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  root 'incidents#index'
+  root 'api/v1/incidents#index'
   
-  resources :incidents, only: [:index, :show]
+  namespace :api do
+    namespace :v1 do
+      resources :incidents, only: [:index, :show]
+    end
+  end
 end
