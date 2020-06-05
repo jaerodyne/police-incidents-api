@@ -1,6 +1,6 @@
 version: 2.1
 orbs:
-  ruby: circleci/ruby@0.1.2 
+  ruby: circleci/ruby@1.0.0
 
 jobs:
   build:
@@ -10,6 +10,16 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Which bundler?
-          command: bundle -v
-      - ruby/bundle-install
+          name: Configure Bundler
+          command: |
+            echo 'export BUNDLER_VERSION=$(cat Gemfile.lock | tail -1 | tr -d " ")' >> $BASH_ENV
+            source $BASH_ENV
+            gem install bundler
+      - ruby/install-deps
+      - ruby/rspec-test
+
+workflows:
+  version: 2
+  test-deploy:
+    jobs:
+      - build:
