@@ -1,0 +1,19 @@
+version: 2.1
+orbs:
+  ruby: circleci/ruby@1.0.0
+
+jobs:
+  build:
+    docker:
+      - image: circleci/ruby:2.7.1
+    executor: ruby/default
+    steps:
+      - checkout
+      - run:
+          name: Configure Bundler
+          command: |
+            echo 'export BUNDLER_VERSION=$(cat Gemfile.lock | tail -1 | tr -d " ")' >> $BASH_ENV
+            source $BASH_ENV
+            gem install bundler
+      - ruby/install-deps
+      - ruby/rspec-test
