@@ -17,7 +17,7 @@ CSV.foreach(incident_data, headers: true) do |row|
     age: row['age'].to_i,
     gender: row['gender'],
     race: row['race'],
-    date: row['date'].to_datetime,
+    date: row['date'].to_date,
     city: row['city'],
     state: row['state'],
     cause_of_death: cause_of_death
