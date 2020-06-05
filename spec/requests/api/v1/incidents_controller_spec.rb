@@ -16,6 +16,75 @@ describe Api::V1::IncidentsController, type: :request do
 
       expect(JSON.parse(response.body).length).to eq Incident.count
     end
+
+    context 'query params' do
+      it 'filters by last name' do
+        last_name = Incident.create(last_name: 'Wobble').last_name
+        Incident.create(last_name: 'Yip')
+
+        get "/api/v1/incidents?last_name=#{last_name}"
+
+        expect(JSON.parse(response.body).map { |incident| incident['last_name'] }).to all eq(last_name)
+      end
+
+      it 'filters by age' do
+        age = Incident.create(age: 50).age
+        Incident.create(state: 43)
+
+        get "/api/v1/incidents?age=#{age}"
+
+        expect(JSON.parse(response.body).map { |incident| incident['age'] }).to all eq(age)
+      end
+
+      it 'filters by gender' do
+        gender = Incident.create(gender: 'M').gender
+        Incident.create(state: 'F')
+
+        get "/api/v1/incidents?gender=#{gender}"
+
+        expect(JSON.parse(response.body).map { |incident| incident['gender'] }).to all eq(gender)
+      end
+
+      it 'filters by race' do
+        race = Incident.create(race: 'A').race
+        Incident.create(race: 'W')
+
+        get "/api/v1/incidents?race=#{race}"
+
+        expect(JSON.parse(response.body).map { |incident| incident['race'] }).to all eq(race)
+      end
+
+      xit 'filters by date' do
+        # TODO: We might want to allow for a date range to be entered or even a year for this filter to be useful
+      end
+
+      it 'filters by city' do
+        city = Incident.create(city: 'Minneapolis').city
+        Incident.create(city: 'Chicago')
+
+        get "/api/v1/incidents?city=#{city}"
+
+        expect(JSON.parse(response.body).map { |incident| incident['city'] }).to all eq(city)
+      end
+
+      it 'filters by state' do
+        state = Incident.create(state: 'MN').state
+        Incident.create(state: 'IL')
+
+        get "/api/v1/incidents?state=#{state}"
+
+        expect(JSON.parse(response.body).map { |incident| incident['state'] }).to all eq(state)
+      end
+
+      it 'filters by cause of death' do
+        cause_of_death = Incident.create(cause_of_death: 'shot').cause_of_death
+        Incident.create(cause_of_death: 'knife')
+
+        get "/api/v1/incidents?cause_of_death=#{cause_of_death}"
+
+        expect(JSON.parse(response.body).map { |incident| incident['cause_of_death'] }).to all eq(cause_of_death)
+      end
+    end
   end
 
   describe '#show' do
