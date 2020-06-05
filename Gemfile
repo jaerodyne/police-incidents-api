@@ -15,6 +15,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'pry'
   gem 'rspec'
+  gem 'rspec_junit_formatter', '~> 0.4.1'
   gem 'rspec-rails'
 end
 
