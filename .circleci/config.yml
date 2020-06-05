@@ -17,9 +17,3 @@ jobs:
             gem install bundler
       - ruby/install-deps
       - ruby/rspec-test
-
-workflows:
-  version: 2
-  test-deploy:
-    jobs:
-      - build:
