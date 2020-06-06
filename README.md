@@ -138,7 +138,6 @@ The gem is available as open source under the terms of the [MIT License](http://
 
 ### TODO:
 - [ ] Document, document, document
-- [ ] Create a filter for a date range or a year as a query param
-- [ ] Upload previous years, current seeds are only for 2020 and from Washington Post Data Source
+- [ ] Add more data sources, current seeds are only for 2020 and from Washington Post Data Source
 - [ ] Add Code of Conduct
 - [ ] Add Contributing Guide
