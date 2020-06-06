@@ -54,8 +54,13 @@ describe Api::V1::IncidentsController, type: :request do
         expect(JSON.parse(response.body).map { |incident| incident['race'] }).to all eq(race)
       end
 
-      xit 'filters by date' do
-        # TODO: We might want to allow for a date range to be entered or even a year for this filter to be useful
+      it 'filters by year' do
+        year = Incident.create(date: Date.new(2020)).date.year
+        Incident.create(date: Date.new(2015))
+
+        get "/api/v1/incidents?year=#{year}"
+
+        expect(JSON.parse(response.body).map { |incident| incident['date'].to_date.year }).to all eq(year)
       end
 
       it 'filters by city' do

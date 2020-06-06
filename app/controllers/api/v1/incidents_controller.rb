@@ -8,7 +8,7 @@ module Api
         age
         gender
         race
-        date
+        year
         city
         state
         cause_of_death
