@@ -1,4 +1,5 @@
 # Police Incidents API
+This is an API that aims to hold the data for police incidents in the US in a centralized place. The current API data is sourced from [Washington Post's data of police shootings from 2015](https://github.com/washingtonpost/data-police-shootings/blob/master/fatal-police-shootings-data.csv) and onwards. We hope to add more data sources in the future.
 
 ## Table of contents
 
@@ -90,15 +91,43 @@
 
 
 ## Endpoints
+Returns a JSON Array of all incidents:
 ```
-/incidents
+GET /api/v1/incidents
 ```
+Returns a particular incident according to id:
 ```
-/incidents/:id
+/api/v1/incidents/:id
 ```
+### Optional filters and query params
+Query params can be passed in to filter the data as follows:
+
+* `last_name` The last name of the victim in the incident
+* `age` The age of the victim in the incident
+* `gender` The following letters are used to represent gender:
+   * `M` Male
+   * `F` Female
+   * `None` Unknown
+* `race` The following letters are used to represent race:
+   * `W` White, non-Hispanic
+   * `B` Black, non-Hispanic
+   * `A` Asian
+   * `N` Native American
+   * `H` Hispanic
+   * `O` Other
+   * `None` Unknown
+* `year` The year of the incident
+* `city` The city the incident occurred in
+* `state` The abbreviated state the incident occurred in
+* `cause_of_death` The causes of death are as follows:
+   * `shot`
+   * `tasered`
+   
+Example query with filters:
 ```
-/incidents?city=Chicago&race=A
+/api/v1/incidents?last_name=Johnson&city=Chicago&state=IL&race=B&year=2015
 ```
+
 ## Code of Conduct
 
 ## Contributing
