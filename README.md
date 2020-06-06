@@ -97,7 +97,7 @@ GET /api/v1/incidents
 ```
 Returns a particular incident according to id:
 ```
-/api/v1/incidents/:id
+GET /api/v1/incidents/:id
 ```
 ### Optional filters and query params
 Query params can be passed in to filter the data as follows:
@@ -125,7 +125,7 @@ Query params can be passed in to filter the data as follows:
    
 Example query with filters:
 ```
-/api/v1/incidents?last_name=Johnson&city=Chicago&state=IL&race=B&year=2015
+GET /api/v1/incidents?last_name=Johnson&city=Chicago&state=IL&race=B&year=2015
 ```
 
 ## Code of Conduct
