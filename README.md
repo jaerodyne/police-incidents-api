@@ -105,7 +105,7 @@ Query params can be passed in to filter the data:
 | Filter | Type | Description |
 | ------ | ---- | ----------- |
 | `last_name` | String | Filter by the last name of the victim in the incident |
-| `age` | Integer | Filter by age |
+| `age` | Integer | Filter by age or age range, with the beginning and the end of the age range separated by a comma `age=20,29` |
 | `gender` | String | Filter by gender using the following keys that represent these values:<ul><li>`M` Male</li><li>`F` Female</li><li>`None` Unknown</li></ul> |
 | `race` | String | Filter by race using the following keys that represent these values:<ul><li>`W` White, non-Hispanic</li><li>`B` Black, non-Hispanic</li><li>`A` Asian</li><li>`N` Native American</li><li>`H` Hispanic</li><li>`O` Other</li><li>`None` Unknown</li></ul> |
 | `year` | Integer | The year of the incident |

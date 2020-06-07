@@ -28,12 +28,25 @@ describe Api::V1::IncidentsController, type: :request do
       end
 
       it 'filters by age' do
-        age = Incident.create(age: 50).age
-        Incident.create(state: 43)
+        age = Incident.create(age: 42).age
+        Incident.create(age: 36)
 
         get "/api/v1/incidents?age=#{age}"
 
-        expect(JSON.parse(response.body).map { |incident| incident['age'] }).to all eq(age)
+        expect(JSON.parse(response.body).map { |incident| incident['age'] }).to all eq age
+      end
+
+      it 'filters by age range' do
+        age1 = Incident.create(age: 43).age
+        age2 = Incident.create(age: 50).age
+        age3 = Incident.create(age: 22).age
+
+        age_params = "#{age1},#{age2}"
+
+        get "/api/v1/incidents?age=#{age_params}"
+
+        expect(JSON.parse(response.body).map { |incident| incident['age'] }).to match_array ([age1, age2])
+        expect(JSON.parse(response.body).map { |incident| incident['age'] }).to_not include age3
       end
 
       it 'filters by gender' do
