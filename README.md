@@ -87,7 +87,7 @@ This is an API that aims to hold the data for police incidents in the US in a ce
 
 5. Run the application using `rails s`
 
-6. Open your browser to `localhost:3000/incidents` and see the result
+6. Open your browser to `localhost:3000/api/v1/incidents` and see the result
 
 
 ## Endpoints
@@ -100,29 +100,19 @@ Returns a particular incident according to id:
 GET /api/v1/incidents/:id
 ```
 ### Optional filters and query params
-Query params can be passed in to filter the data as follows:
+Query params can be passed in to filter the data:
 
-* `last_name` The last name of the victim in the incident
-* `age` The age of the victim in the incident
-* `gender` The following letters are used to represent gender:
-   * `M` Male
-   * `F` Female
-   * `None` Unknown
-* `race` The following letters are used to represent race:
-   * `W` White, non-Hispanic
-   * `B` Black, non-Hispanic
-   * `A` Asian
-   * `N` Native American
-   * `H` Hispanic
-   * `O` Other
-   * `None` Unknown
-* `year` The year of the incident
-* `city` The city the incident occurred in
-* `state` The abbreviated state the incident occurred in
-* `cause_of_death` The causes of death are as follows:
-   * `shot`
-   * `tasered`
-   
+| Filter | Type | Description |
+| ------ | ---- | ----------- |
+| `last_name` | String | Filter by the last name of the victim in the incident |
+| `age` | Integer | Filter by age |
+| `gender` | String | Filter by gender using the following keys that represent these values:<ul><li>`M` Male</li><li>`F` Female</li><li>`None` Unknown</li></ul> |
+| `race` | String | Filter by race using the following keys that represent these values:<ul><li>`W` White, non-Hispanic</li><li>`B` Black, non-Hispanic</li><li>`A` Asian</li><li>`N` Native American</li><li>`H` Hispanic</li><li>`O` Other</li><li>`None` Unknown</li></ul> |
+| `year` | Integer | The year of the incident |
+| `city` | String | The city the incident occurred in |
+| `state` | String | The abbreviated state the incident occurred in |
+| `cause_of_death` | Array | Filter by cause of death using comma-separated values:<ul><li>`shot`</li><li>`tasered`</li></ul> |
+
 Example query with filters:
 ```
 GET /api/v1/incidents?last_name=Johnson&city=Chicago&state=IL&race=B&year=2015
