@@ -82,8 +82,8 @@ describe Api::V1::IncidentsController, type: :request do
       end
 
       it 'filters by cause of death' do
-        cause_of_death = Incident.create(cause_of_death: 'shot').cause_of_death
-        Incident.create(cause_of_death: 'knife')
+        cause_of_death = Incident.create(cause_of_death: ['shot', 'tasered']).cause_of_death
+        Incident.create(cause_of_death: ['knife'])
 
         get "/api/v1/incidents?cause_of_death=#{cause_of_death}"
 
