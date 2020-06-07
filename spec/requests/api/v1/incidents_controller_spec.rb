@@ -51,7 +51,7 @@ describe Api::V1::IncidentsController, type: :request do
 
       it 'filters by gender' do
         gender = Incident.create(gender: 'M').gender
-        Incident.create(state: 'F')
+        Incident.create(gender: 'F')
 
         get "/api/v1/incidents?gender=#{gender}"
 
