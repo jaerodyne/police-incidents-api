@@ -25,3 +25,27 @@ CSV.foreach(incident_data, headers: true) do |row|
 
   bar.increment! 1
 end
+
+# Mapping police violence.org data
+mpv_incident_data = 'lib/tasks/data/MPVDatasetDownload.xlsx'
+xlsx = Roo::Spreadsheet.open(file)
+
+# The first sheet in the excel file holds all police data from 2013-2019
+xlsx.sheet(0).parse(headers: true) do |row|
+  names = row["Victim's name"]&.split(' ')
+  # Get every name except last name in array
+  first_name = names.take(names.length - 1).join(' ')
+  last_name = names.last
+
+  Incident.create(
+    first_name: first_name,
+    last_name: last_name,
+    age: row["Victim's age"],
+    gender: row["Victim's gender"],
+    race: row["Victim's race"],
+    date: row["Date of Incident (month/day/year)"].to_datetime,
+    city: row["City"],
+    state: row["State"],
+    cause_of_death: row["Cause of death"]&.downcase
+  )
+end

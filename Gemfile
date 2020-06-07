@@ -8,8 +8,8 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'pg', '~> 1.2.3'
 gem 'progress_bar'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.1'
+gem 'roo', '~> 2.8.0'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-gem 'websocket-extensions', '>= 0.1.5'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
