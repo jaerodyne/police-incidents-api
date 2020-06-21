@@ -13,6 +13,8 @@ class Incident < ApplicationRecord
   validates :age, numericality: { only_integer: true }, allow_blank: true
   validate :cause_of_death_is_array
 
+  before_validation :canonicalize
+
   def full_name
     "#{first_name} #{last_name}"
   end
@@ -35,5 +37,9 @@ class Incident < ApplicationRecord
 
   def cause_of_death_is_array
     errors.add(:cause_of_death, "must be an array") unless cause_of_death.kind_of?(Array)
+  end
+
+  def canonicalize
+    Canonicalization.new(params: attributes)
   end
 end

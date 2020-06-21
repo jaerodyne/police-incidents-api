@@ -50,7 +50,7 @@ xlsx.sheet(0).parse(headers: true) do |row|
     city: row["City"],
     state: row["State"],
     cause_of_death: row["Cause of death"]&.downcase,
-    source_name: 'mapping_police_violence'
+    source_name: 'mpv'
   )
 
   mpv_incident_data_progress.increment!
