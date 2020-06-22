@@ -30,7 +30,7 @@ def seed_wp_data(washington_post_incident_data, progress: nil)
   end
 end
 
-puts "Seeding Washington Data..."
+puts "Seeding Washington Post Data..."
 seed_wp_data(washington_post_incident_data, progress: washington_post_incident_data_progress)
 
 # Mapping police violence.org data
@@ -41,7 +41,7 @@ mpv_incident_data_progress = ProgressBar.new(xlsx.count)
 def seed_mpv(xlsx, progress: nil)
   # The first sheet in the excel file holds all police data from 2013-2019
   xlsx.sheet(0).parse(headers: true) do |row|
-    # To bypass possible bug where header row itself is being parsed as an incident
+    # To bypass possible bug where header row itself is being parsed as an incident for some reason
     next if row.keys == row.values
 
     names = row["Victim's name"]&.split(' ')
@@ -49,7 +49,11 @@ def seed_mpv(xlsx, progress: nil)
     first_name = names.take(names.length - 1).join(' ')
     last_name = names.last
 
-    cause_of_death = row["Cause of death"]&.downcase.split(',')
+    cause_of_death = if row["Cause of death"].include?('/')
+                       row["Cause of death"]&.downcase.split('/')
+                     else 
+                       row["Cause of death"]&.downcase.split(',')
+                     end
 
     if cause_of_death.length > 1
       cause_of_death = cause_of_death.map(&:parameterize).map(&:underscore)

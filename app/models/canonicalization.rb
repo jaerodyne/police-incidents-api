@@ -4,18 +4,18 @@ class Canonicalization
   CAUSE_OF_DEATH = {
     'asphyxiated' => ['asphyxiated'],
     'baton' => ['baton'],
-    'bean_bag' => ['bean bag'],
+    'bean_bag' => ['bean bag', 'beanbag', 'beanbag_gun', 'bean_bag_gun', 'beanbag_shot_gun', 'beanbag_shotgun'],
     'beaten' => ['beaten'],
-    'bludgeoned' => ['bludgeoned with instrument'],
+    'bludgeoned' => ['bludgeoned_with_instrument'],
     'bomb' => ['bomb'],
     'other' => ['other'],
-    'pepper_spray' => ['pepper spray'],
-    'physical_restraint' => ['physical restraint'],
-    'police_dog' => ['police dog'],
+    'pepper_spray' => ['pepper_spray', 'pepper spray'],
+    'physical_restraint' => ['physical_restraint', 'physical restraint'],
+    'police_dog' => ['police_dog'],
     'shot' => ['gunshot', 'shot'],
     'stabbed' => ['stabbed'],
     'tasered' => ['taser', 'tasered'],
-    'unspecified_less_lethal_weapon' => ['unspecified less lethal weapon'],
+    'unspecified_less_lethal_weapon' => ['unspecified_less_lethal_weapon'],
     'vehicle' => ['vehicle']
   }.freeze
 
@@ -45,20 +45,16 @@ class Canonicalization
   def formatted_params(params)
     formatted_values = {}
     params.map do |key, value|
-      # Call method to override and reformat if key is defined
+      # Call method to override attribute and reformat if defined
       formatted_values[key] = respond_to?(key, value) ? send(key, value) : value
     end
     formatted_values
   end
 
   def cause_of_death(value)
-    return value unless value.length > 1
-
-    value.map do |cause|
-      CAUSE_OF_DEATH.each do |cod, cods|
-        return cod if cods.include?(cause)
-      end
-    end
+    value.map! do |cause|
+      CAUSE_OF_DEATH.find { |cod, cods|  cods.include?(cause) }&.first
+    end.compact
   end
 
   def gender(value)
