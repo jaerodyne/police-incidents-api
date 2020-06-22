@@ -21,8 +21,7 @@ class Canonicalization
 
   GENDER = {
     'M' => 'Male',
-    'F' => 'Female',
-    'None' => 'Unknown'
+    'F' => 'Female'
   }.freeze
 
   RACE = {
@@ -32,8 +31,7 @@ class Canonicalization
     'N' => ['Native American'],
     'H' => ['Hispanic'],
     'O' => ['Other'],
-    'P' => ['Pacific Islander'],
-    'None' => ['Unknown', 'Unknown Race']
+    'P' => ['Pacific Islander']
   }.freeze
 
   def initialize(params: {})
