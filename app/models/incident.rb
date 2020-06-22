@@ -9,6 +9,7 @@ class Incident < ApplicationRecord
   scope :filter_by_cause_of_death, -> (cause_of_death) { 
     where("cause_of_death @> ?", cause_of_death.split(',').to_json)
   }
+  scope :filter_by_source_name, -> (source_name) { where source_name: source_name }
 
   validates :age, numericality: { only_integer: true }, allow_blank: true
   validate :cause_of_death_is_array

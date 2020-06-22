@@ -12,6 +12,7 @@ module Api
         city
         state
         cause_of_death
+        source_name
       ].freeze
 
       def index
