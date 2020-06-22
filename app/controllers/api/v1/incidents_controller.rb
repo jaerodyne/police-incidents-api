@@ -28,6 +28,10 @@ module Api
         render json: @incident
       end
 
+      def sources
+        render json: Incident.pluck(:source_name).uniq
+      end
+
       private
       
       def set_incident

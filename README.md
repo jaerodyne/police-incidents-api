@@ -106,8 +106,8 @@ Query params can be passed in to filter the data:
 | ------ | ---- | ----------- |
 | `last_name` | String | Filter by the last name of the victim in the incident |
 | `age` | Integer | Filter by age or age range, with the beginning and the end of the age range separated by a comma `age=20,29` |
-| `gender` | String | Filter by gender using the following keys that represent these values:<ul><li>`M` Male</li><li>`F` Female</li><li>`None` Unknown</li></ul> |
-| `race` | String | Filter by race using the following keys that represent these values:<ul><li>`W` White, non-Hispanic</li><li>`B` Black, non-Hispanic</li><li>`A` Asian</li><li>`N` Native American</li><li>`H` Hispanic</li><li>`O` Other</li><li>`None` Unknown</li></ul> |
+| `gender` | String | Filter by gender using the following keys that represent these values:<ul><li>`M` Male</li><li>`F` Female</li></ul> |
+| `race` | String | Filter by race using the following keys that represent these values:<ul><li>`W` White, non-Hispanic</li><li>`B` Black, non-Hispanic</li><li>`A` Asian</li><li>`N` Native American</li><li>`H` Hispanic</li><li>`O` Other</li></ul> |
 | `year` | Integer | The year of the incident |
 | `city` | String | The city the incident occurred in |
 | `state` | String | The abbreviated state the incident occurred in |
@@ -128,6 +128,5 @@ The gem is available as open source under the terms of the [MIT License](http://
 
 ### TODO:
 - [ ] Document, document, document
-- [ ] Add more data sources, current seeds are only for 2020 and from Washington Post Data Source
 - [ ] Add Code of Conduct
 - [ ] Add Contributing Guide
